@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% block content %}
+<h1>Equipment</h1>
+<form method="post" class="form">
+<input name="code" placeholder="Equipment code" required>
+<input name="type" placeholder="Type e.g. Dump Truck" required>
+<input name="fuel_type" value="Diesel" required>
+<input name="expected_lph" type="number" step="0.1" placeholder="Expected L/hr" required>
+<button>Add Equipment</button></form>
+<table><tr><th>Code</th><th>Type</th><th>Fuel</th><th>Expected L/hr</th></tr>
+{% for e in equipment %}<tr><td>{{e.code}}</td><td>{{e.type}}</td><td>{{e.fuel_type}}</td><td>{{e.expected_lph}}</td></tr>{% endfor %}
+</table>{% endblock %}

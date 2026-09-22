@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% block content %}
+<h1>Issue Fuel</h1>
+<form method="post" class="form">
+<select name="equipment_id" required>{% for e in equipment %}<option value="{{e.id}}">{{e.code}} — {{e.type}}</option>{% endfor %}</select>
+<input name="operator" placeholder="Operator name" required>
+<input name="litres" type="number" step="0.1" placeholder="Litres" required>
+<input name="meter_reading" type="number" step="0.1" placeholder="Hour-meter / odometer" required>
+<button>Record Fuel Issue</button></form>
+<h2>Recent Issues</h2>
+<table><tr><th>Date</th><th>Equipment</th><th>Operator</th><th>Litres</th><th>Meter</th></tr>
+{% for x in issues %}<tr><td>{{x.issue_date}}</td><td>{{x.code}}</td><td>{{x.operator}}</td><td>{{x.litres}}</td><td>{{x.meter_reading}}</td></tr>{% endfor %}
+</table>{% endblock %}

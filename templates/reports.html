@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block content %}
+<h1>Consumption Report</h1>
+<table><tr><th>Equipment</th><th>Type</th><th>Total Fuel</th><th>Transactions</th><th>Expected L/hr</th></tr>
+{% for r in rows %}<tr><td>{{r.code}}</td><td>{{r.type}}</td><td>{{"%.1f"|format(r.litres)}} L</td><td>{{r.transactions}}</td><td>{{r.expected_lph}}</td></tr>{% endfor %}
+</table>{% endblock %}

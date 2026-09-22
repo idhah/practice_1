@@ -1,0 +1,14 @@
+{% extends "base.html" %}{% block content %}
+<h1>Fuel Dashboard</h1>
+<div class="cards">
+<div><span>Fuel Received</span><strong>{{ "%.1f"|format(received) }} L</strong></div>
+<div><span>Fuel Issued</span><strong>{{ "%.1f"|format(issued) }} L</strong></div>
+<div><span>Estimated Balance</span><strong>{{ "%.1f"|format(balance) }} L</strong></div>
+</div>
+<h2>Equipment Consumption</h2>
+<table><tr><th>Equipment</th><th>Type</th><th>Fuel Used</th><th>Expected L/hr</th><th>Status</th></tr>
+{% for e in equipment %}
+<tr><td>{{e.code}}</td><td>{{e.type}}</td><td>{{"%.1f"|format(e.litres)}} L</td>
+<td>{{e.expected_lph}}</td><td>{% if e.litres > e.expected_lph*30 %}<b class="warn">Review</b>{% else %}Normal{% endif %}</td></tr>
+{% endfor %}</table>
+{% endblock %}

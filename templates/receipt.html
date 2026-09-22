@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% block content %}
+<h1>Receive Fuel</h1>
+<form method="post" class="form">
+<input name="supplier" placeholder="Supplier" required>
+<input name="litres" type="number" step="0.1" placeholder="Litres received" required>
+<input name="price_per_litre" type="number" step="0.01" placeholder="Price per litre" required>
+<button>Record Receipt</button></form>
+<h2>Recent Receipts</h2>
+<table><tr><th>Date</th><th>Supplier</th><th>Litres</th><th>Price/L</th></tr>
+{% for x in receipts %}<tr><td>{{x.receipt_date}}</td><td>{{x.supplier}}</td><td>{{x.litres}}</td><td>{{x.price_per_litre}}</td></tr>{% endfor %}
+</table>{% endblock %}
